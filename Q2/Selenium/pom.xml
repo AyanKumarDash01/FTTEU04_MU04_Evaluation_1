@@ -1,0 +1,66 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+</properties>
+
+
+<dependencies>
+<!-- Selenium for Java -->
+<dependency>
+<groupId>org.seleniumhq.selenium</groupId>
+<artifactId>selenium-java</artifactId>
+<version>4.35.0</version>
+</dependency>
+
+
+<!-- TestNG -->
+<dependency>
+<groupId>org.testng</groupId>
+<artifactId>testng</artifactId>
+<version>7.11.0</version>
+<scope>test</scope>
+</dependency>
+
+
+<!-- WebDriverManager -->
+<dependency>
+<groupId>io.github.bonigarcia</groupId>
+<artifactId>webdrivermanager</artifactId>
+<version>6.3.1</version>
+</dependency>
+</dependencies>
+
+
+<build>
+<plugins>
+<!-- Compile with Java 17 -->
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-compiler-plugin</artifactId>
+<version>3.14.0</version>
+<configuration>
+<source>${maven.compiler.source}</source>
+<target>${maven.compiler.target}</target>
+</configuration>
+</plugin>
+
+
+<!-- Run TestNG tests -->
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-surefire-plugin</artifactId>
+<version>3.5.3</version>
+<configuration>
+<includes>
+<include>**/*Test.java</include>
+<include>**/*Tests.java</include>
+<include>**/*TestNG.java</include>
+<include>**/SeleniumSprintChallenge.java</include>
+</includes>
+<systemPropertyVariables>
+<webdriver.http.factory>jdk-http-client</webdriver.http.factory>
+</systemPropertyVariables>
+</configuration>
+</plugin>
+</plugins>
+</build>
+</project>
